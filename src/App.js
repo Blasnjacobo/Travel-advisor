@@ -10,7 +10,6 @@ function App () {
   const [places, setPlaces] = useState([])
   const [filteredPlaces, setFilteredPlaces] = useState([])
   const [childClicked, setChildClicked] = useState(null)
-
   const [coordinates, setCoordinates] = useState({ })
   const [bounds, setBounds] = useState({ })
 

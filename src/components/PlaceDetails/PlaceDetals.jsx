@@ -8,8 +8,9 @@ import photo from './food404.png'
 
 import useStyles from './styles'
 
-const PlaceDetails = ({ place }) => {
+const PlaceDetails = ({ place, selected, refProp }) => {
   const classes = useStyles()
+  if (selected) refProp?.current?.scrollIntoView({ behavior: 'smooth', block: 'start' })
   return (
     <Card>
       <CardMedia
@@ -21,6 +22,7 @@ const PlaceDetails = ({ place }) => {
         <Typography gutterBottom variant='h5'>{place.name}</Typography>
         <Box className={classes.spacing}>
           <Rating value={Number(place.rating)} readOnly />
+          <Typography gutterBottom variant='subtitle1'>out of {place.num_reviews}</Typography>
         </Box>
         <Box className={classes.spacing}>
           <Typography variant='subtittle1'>Price</Typography>

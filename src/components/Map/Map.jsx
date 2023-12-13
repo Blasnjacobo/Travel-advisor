@@ -9,7 +9,6 @@ import Rating from '@material-ui/lab/Rating'
 import photo from './food404.png'
 
 import useStyles from './styles'
-import { PlaceSharp } from '@material-ui/icons'
 
 const Map = ({ setCoordinates, setBounds, coordinates, places, setChildClicked }) => {
   // console.log(coordinates, bounds)
@@ -22,7 +21,7 @@ const Map = ({ setCoordinates, setBounds, coordinates, places, setChildClicked }
     <div style={{ height: '85vh', width: '100%' }}>
       <GoogleMapReact
         //* https://console.cloud.google.com/projectcreate
-        bootstrapURLKeys={{ key: 'AIzaSyAqf_7nphSyEMrfmcwn4yzwaFrrKMADR4M' }}
+        bootstrapURLKeys={{ key: process.env.REACT_APP_GOOGLE_MAPS_API_KEY }}
         defaultCenter={coordinates}
         center={coordinates}
         defaultZoom={14}

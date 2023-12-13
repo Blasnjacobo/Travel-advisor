@@ -1,23 +1,25 @@
 /* eslint-disable no-unused-vars */
 import React, { useState, useEffect, createRef } from 'react'
-import { CircularProgress, Grid, Typography, InputLabel, MenuItem, FormControl, Select, iSLoading } from '@material-ui/core'
+import { CircularProgress, Grid, Typography, InputLabel, MenuItem, FormControl, Select } from '@material-ui/core'
 import useStyles from './styles'
 import PlaceDetails from '../PlaceDetails/PlaceDetals'
 
-const List = ({ places, childClicked, iSLoading, type, setType, rating, setRating }) => {
+const List = ({ places, childClicked, isLoading, type, setType, rating, setRating }) => {
   const classes = useStyles()
 
   const [elRefs, setElRefs] = useState([])
 
+  console.log({ childClicked })
+
   useEffect(() => {
-    const refs = Array(places?.length).fill().map((_, i) => refs[i] || createRef())
+    const refs = Array(places?.length).fill().map((_, i) => elRefs[i] || createRef())
     setElRefs(refs)
-  }, [])
+  }, [places])
 
   return (
     <div className={classes.container}>
       <Typography variant='h4'>Restaurants, Hotels & Attractions around you</Typography>
-      {iSLoading
+      {isLoading
         ? (
           <div className={classes.loading}>
             <CircularProgress size='5rem' />

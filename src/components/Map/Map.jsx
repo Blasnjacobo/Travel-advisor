@@ -7,6 +7,7 @@ import { Typography, Paper, useMediaQuery } from '@material-ui/core'
 import LocationOnOutlinedIcon from '@material-ui/icons/LocationOnOutlined'
 import Rating from '@material-ui/lab/Rating'
 import photo from './food404.png'
+import mapStyles from './mapStyles'
 
 import useStyles from './styles'
 
@@ -26,7 +27,7 @@ const Map = ({ setCoordinates, setBounds, coordinates, places, setChildClicked }
         center={coordinates}
         defaultZoom={14}
         margin={[50, 50, 50, 50]}
-        options={''}
+        options={{ disableDefaultUI: true, zoomControl: true, styles: mapStyles }}
         onChange={(e) => {
           setCoordinates({ lat: e.center.lat, lng: e.center.lng })
           setBounds({ ne: e.marginBounds.ne, sw: e.marginBounds.sw })
@@ -36,13 +37,13 @@ const Map = ({ setCoordinates, setBounds, coordinates, places, setChildClicked }
       >
         {places?.map((place, i) => (
           <div
-            className={classes.markerContainer}
             lat={Number(place.latitude)}
             lng={Number(place.longitude)}
+            text={place.name}
             key={i}
           >
             {
-              isDesktop
+              !isDesktop
                 ? (
                   <LocationOnOutlinedIcon color='primary' fontSize='large' />
                   )
